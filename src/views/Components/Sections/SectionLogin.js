@@ -30,8 +30,8 @@ export default function SectionLogin() {
             <Card>
               <form className={classes.form}>
                 <CardHeader color="primary" className={classes.cardHeader}>
-                  <h4>Login</h4>
-                  <div className={classes.socialLine}>
+                  <h4>Iniciar sesión</h4>
+                  {/*<div className={classes.socialLine}>
                     <Button
                       justIcon
                       href="#pablo"
@@ -63,11 +63,11 @@ export default function SectionLogin() {
                         }
                       />
                     </Button>
-                  </div>
+                  </div>*/}
                 </CardHeader>
-                <p className={classes.divider}>Or Be Classical</p>
+                {/*<p className={classes.divider}>Or Be Classical</p>*/}
                 <CardBody>
-                  <CustomInput
+                  {/*<CustomInput
                     labelText="First Name..."
                     id="first"
                     formControlProps={{
@@ -81,9 +81,9 @@ export default function SectionLogin() {
                         </InputAdornment>
                       )
                     }}
-                  />
+                  />*/}
                   <CustomInput
-                    labelText="Email..."
+                    labelText="Correo electonico..."
                     id="email"
                     formControlProps={{
                       fullWidth: true
@@ -98,7 +98,7 @@ export default function SectionLogin() {
                     }}
                   />
                   <CustomInput
-                    labelText="Password"
+                    labelText="Contraseña"
                     id="pass"
                     formControlProps={{
                       fullWidth: true
@@ -117,9 +117,16 @@ export default function SectionLogin() {
                   />
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
-                  <Button simple color="primary" size="lg">
-                    Get started
+                  <Button default color="primary" size="lg">
+                    Entrar
                   </Button>
+                </CardFooter>
+                <CardFooter className={classes.cardFooter}>
+                  <a href="">
+                    <Button simple color="primary" size="lg" href>
+                      Crear cuenta
+                    </Button>
+                  </a>
                 </CardFooter>
               </form>
             </Card>
