@@ -13,12 +13,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import {createPOST} from './../API/createPOST';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        LA VERGA
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -49,6 +51,29 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  var usuario = {
+    apellido: '',
+    contraseña: '',
+    correo: '',
+    id: 0,
+    nombre: '',
+    usuario: ''
+  }
+
+  var callPOST = (event) => {
+    createPOST(usuario);
+  }
+
+  var actualiza = (e, type) => {
+
+    usuario[type] = e.target.value;
+
+    console.log(JSON.stringify(usuario));
+  
+  }
+
+
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,16 +84,16 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit = {callPOST()}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="nombre"
                 variant="outlined"
-                required
+                onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
-                id="firstName"
+                id="nombre"
                 label="First Name"
                 autoFocus
               />
@@ -78,9 +103,10 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                onChange = {e => actualiza(e, 'apellido')}
+                id="apellido"
                 label="Last Name"
-                name="lastName"
+                name="apellido"
                 autoComplete="lname"
               />
             </Grid>
@@ -89,10 +115,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="username"
+                onChange = {e => actualiza(e, 'usuario')}
+                id="usuario"
                 label="Nombre de Usuario"
-                name="Username"
-                autoComplete="Username"
+                name="usuario"
+                autoComplete="usuario"
               />
               </Grid>
             <Grid item xs={12}>
@@ -100,10 +127,11 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                onChange = {e => actualiza(e, 'correo')}
+                id="correo"
+                label="correo Address"
+                name="correo"
+                autoComplete="correo"
               />
             </Grid>
             <Grid item xs={12}>
@@ -111,11 +139,12 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name="contraseña"
+                label="contraseña"
+                type="contraseña"
+                onChange = {e => actualiza(e, 'contraseña')}
+                id="contraseña"
+                autoComplete="current-contraseña"
               />
             </Grid>
             
