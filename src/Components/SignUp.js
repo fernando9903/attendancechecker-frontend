@@ -70,7 +70,7 @@ export default function SignUp() {
     usuario[type] = e.target.value;
 
     console.log(JSON.stringify(usuario));
-    if(type == 'hola')
+    if(type == 'registrar')
     {
       createPOST(usuario);
     }
@@ -89,7 +89,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit = {e => actualiza(e, 'hola')}>
+        <form className={classes.form} noValidate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField

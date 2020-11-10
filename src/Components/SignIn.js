@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,8 +12,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import createLogIn from './../API/createLogIn';
+import React, { useState, useEffect } from "react";
 
-function Copyright() {
+ const Copyright= () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -49,6 +51,47 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [state, setState] = useState({
+    select: {
+      apellido: 'null',
+    contraseña: 'null',
+    correo: 'null',
+    id: 0,
+    nombre: 'null',
+    usuario: 'null'
+    }
+  });
+
+  const [json, setJson] = useState([]);
+
+  useEffect(() => {
+   console.log(state);
+   console.log(createLogIn(state));
+     
+   
+   }, [state]);
+  
+
+   const handleChange = e => {
+    e.preventDefault();
+     console.log("esta es la e");
+     console.log(e);
+    setState({
+      select: {
+        apellido: 'null',
+      contraseña: e.target.password.value,
+      correo: e.target.email.value,
+      id: 0,
+      nombre: 'null',
+      usuario: e.target.email.value
+      }
+
+
+    });
+  }
+
+  
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,7 +102,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit = {e => handleChange(e)}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -115,3 +158,4 @@ export default function SignIn() {
     </Container>
   );
 }
+
