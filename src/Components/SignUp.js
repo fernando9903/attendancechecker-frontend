@@ -60,15 +60,20 @@ export default function SignUp() {
     usuario: ''
   }
 
-  var callPOST = (event) => {
+  /*var callPOST = (event) => {
+    console.log(JSON.stringify(usuario));
     createPOST(usuario);
-  }
+  }*/
 
   var actualiza = (e, type) => {
 
     usuario[type] = e.target.value;
 
     console.log(JSON.stringify(usuario));
+    if(type == 'hola')
+    {
+      createPOST(usuario);
+    }
   
   }
 
@@ -84,7 +89,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit = {callPOST()}>
+        <form className={classes.form} noValidate onSubmit = {e => actualiza(e, 'hola')}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
