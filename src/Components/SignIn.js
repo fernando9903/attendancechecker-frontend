@@ -65,8 +65,8 @@ export default function SignIn() {
   const [json, setJson] = useState([]);
 
   useEffect(() => {
-   console.log(state);
-   console.log(createLogIn(state));
+    var valor= createLogIn(state);
+   console.log(valor);
      
    
    }, [state]);
