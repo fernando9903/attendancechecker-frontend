@@ -7,10 +7,10 @@ import fetch from 'isomorphic-fetch';
 export function createPOST(data) {
     return fetch('http://localhost:8080/Profesores2/webresources/profesores', {
         method: 'POST',
-        mode: 'CORS',
+        mode: 'no-cors',
         body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'json'
         }
     }).then(res => {
         return res;
