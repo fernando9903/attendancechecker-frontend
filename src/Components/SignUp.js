@@ -15,6 +15,10 @@ import Container from '@material-ui/core/Container';
 
 import {createPOST} from './../API/createPOST';
 
+import SignIn from './SignIn';
+
+import ReactDOM from 'react-dom';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -60,19 +64,31 @@ export default function SignUp() {
     usuario: ''
   }
 
-  var callPOST = (event) => {
+  /*var callPOST = (event) => {
+    console.log(JSON.stringify(usuario));
     createPOST(usuario);
-  }
+  }*/
 
   var actualiza = (e, type) => {
 
     usuario[type] = e.target.value;
 
     console.log(JSON.stringify(usuario));
+    if(type == 'registrar')
+    {
+      createPOST(usuario);
+    }
   
   }
 
-
+  const changeToSignIn = () => {
+    ReactDOM.render(
+      <React.StrictMode>
+        <SignIn/>
+      </React.StrictMode>,
+      document.getElementById('root')
+    );
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -82,9 +98,9 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Registrarte
         </Typography>
-        <form className={classes.form} noValidate onSubmit = {callPOST()}>
+        <form className={classes.form} noValidate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -94,7 +110,7 @@ export default function SignUp() {
                 onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
                 id="nombre"
-                label="First Name"
+                label="Nombre"
                 autoFocus
               />
             </Grid>
@@ -105,7 +121,7 @@ export default function SignUp() {
                 fullWidth
                 onChange = {e => actualiza(e, 'apellido')}
                 id="apellido"
-                label="Last Name"
+                label="Apellido"
                 name="apellido"
                 autoComplete="lname"
               />
@@ -129,7 +145,7 @@ export default function SignUp() {
                 fullWidth
                 onChange = {e => actualiza(e, 'correo')}
                 id="correo"
-                label="correo Address"
+                label="Correo"
                 name="correo"
                 autoComplete="correo"
               />
@@ -156,12 +172,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Registrarte
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="https://www.google.com" variant="body2">
-                Already have an account? Sign in
+              <Link variant="body2" onClick = {() => {changeToSignIn()}}>
+                ¿Ya tienes una cuenta? Inicia sesión
               </Link>
             </Grid>
           </Grid>
@@ -173,3 +189,4 @@ export default function SignUp() {
     </Container>
   );
 }
+
