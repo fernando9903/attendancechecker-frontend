@@ -76,7 +76,8 @@ export default function SignUp() {
     console.log(JSON.stringify(usuario));
     if(type == 'registrar')
     {
-      console.log(createPOST(usuario));
+      console.log("eee");
+      createPOST(usuario);
     }
   
   }
@@ -177,6 +178,7 @@ export default function SignUp() {
           >
             Registrarte
           </Button>
+          <p>Datos ya existentes</p>
           <Grid container justify="flex-end">
             <Grid item>
               <Link variant="body2" onClick = {() => {changeToSignIn()}}>
