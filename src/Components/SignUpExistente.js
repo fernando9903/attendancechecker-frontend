@@ -24,7 +24,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your website
+        LA VERGA
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -76,7 +76,8 @@ export default function SignUp() {
     console.log(JSON.stringify(usuario));
     if(type == 'registrar')
     {
-      console.log(createPOST(usuario));
+      console.log("eee");
+      createPOST(usuario);
     }
   
   }
@@ -177,6 +178,7 @@ export default function SignUp() {
           >
             Registrarte
           </Button>
+          <p>Datos ya existentes</p>
           <Grid container justify="flex-end">
             <Grid item>
               <Link variant="body2" onClick = {() => {changeToSignIn()}}>

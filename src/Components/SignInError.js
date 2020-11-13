@@ -130,9 +130,9 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
-            type="password"
             label="Contraseña"
             id="password"
+            type="password"
             autoComplete="current-password"
           />
           
@@ -146,7 +146,7 @@ export default function SignIn() {
             Iniciar sesión
           </Button>
           <Grid container>
-            
+            <p>Datos incorrectos, intente de nuevo</p>
             <Grid item>
               <Link variant="body2" onClick = { () => {changeToSignUp()}}>
                 {"¿No tienes una cuenta? Registrate"}
