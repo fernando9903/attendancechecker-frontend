@@ -106,6 +106,8 @@ export default function SignUp() {
               <TextField
                 autoComplete="fname"
                 name="nombre"
+                required
+                type="text"
                 variant="outlined"
                 onChange = {e => actualiza(e, 'nombre')}
                 fullWidth

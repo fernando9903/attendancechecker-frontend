@@ -108,6 +108,8 @@ export default function SignUp() {
                 autoComplete="fname"
                 name="nombre"
                 variant="outlined"
+                required
+                inputProps={{pattern: "[a-zA-Z]"}}
                 onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
                 id="nombre"
