@@ -30,9 +30,8 @@ export function createPOST(data) {
         //res.text()
         if(res.status == "201") {
             ReactDOM.render(
-                <React.StrictMode>
-                    <SignIn/>
-                  </React.StrictMode>,
+                
+                    <SignIn/>,
                   document.getElementById('root'));
         }
 
