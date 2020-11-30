@@ -56,12 +56,10 @@ export default function SignUp() {
   const classes = useStyles();
 
   var usuario = {
-    apellido: '',
-    contraseña: '',
-    correo: '',
-    id: 0,
-    nombre: '',
-    usuario: ''
+    name: '',
+    last_name: '',
+    email: '',
+    password: '',
   }
 
   /*var callPOST = (event) => {
@@ -76,7 +74,7 @@ export default function SignUp() {
     console.log(JSON.stringify(usuario));
     if(type == 'registrar')
     {
-      console.log(createPOST(usuario));
+      createPOST(usuario);
     }
   
   }
@@ -109,9 +107,9 @@ export default function SignUp() {
                 required
                 type="text"
                 variant="outlined"
-                onChange = {e => actualiza(e, 'nombre')}
+                onChange = {e => actualiza(e, 'name')}
                 fullWidth
-                id="nombre"
+                id="name"
                 label="Nombre"
                 autoFocus
               />
@@ -121,32 +119,21 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                onChange = {e => actualiza(e, 'apellido')}
-                id="apellido"
+                onChange = {e => actualiza(e, 'last_name')}
+                id="last_name"
                 label="Apellido"
                 name="apellido"
                 autoComplete="lname"
               />
             </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                onChange = {e => actualiza(e, 'usuario')}
-                id="usuario"
-                label="Nombre de Usuario"
-                name="usuario"
-                autoComplete="usuario"
-              />
-              </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                onChange = {e => actualiza(e, 'correo')}
-                id="correo"
+                onChange = {e => actualiza(e, 'email')}
+                id="email"
                 type="email"
                 label="Correo"
                 name="correo"
@@ -163,8 +150,8 @@ export default function SignUp() {
                 type="password"
                 helperText="Deben ser 8 caracteres"
             inputProps= {{pattern: ".{8,}" }}
-                onChange = {e => actualiza(e, 'contraseña')}
-                id="contraseña"
+                onChange = {e => actualiza(e, 'password')}
+                id="password"
                 autoComplete="current-contraseña"
               />
             </Grid>

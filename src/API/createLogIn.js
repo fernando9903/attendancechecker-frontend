@@ -12,8 +12,13 @@ import Home from './../Components/Home'
 export default function createLogIn(props)  {
  
     try {
-       fetch (`http://localhost:8080/Profesores2/prof/${(props.select.contraseña)}/${(props.select.usuario)}/${(props.select.correo)}`)
-                  .then(res=> res.text()).then(pokemon=> {if(pokemon=="true"){
+       fetch (`http://localhost:3000/profesor/${(props.select.correo)}/${(props.select.contraseña)}`)
+                  .then(res=> res.text()).then(pokemon => {
+                    
+                    console.log("ESTO FUE LO QUE REGRESO")
+                    console.log(pokemon);
+                    
+                    if(pokemon!="{\"message\":\"NOT FOUND\"}"){
                     ReactDOM.render(
                       <React.StrictMode>
                         <Home/>
