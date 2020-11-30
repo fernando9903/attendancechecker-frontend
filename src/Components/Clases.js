@@ -12,6 +12,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import {createPOST} from './../API/createPOST';
 
@@ -24,7 +29,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your website
+        ITSON
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -51,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
 
 export default function SignUp() {
   const classes = useStyles();
@@ -90,6 +96,13 @@ export default function SignUp() {
     );
   }
 
+const [age, setAge] = React.useState('');
+
+const handleChange = (event) => {
+  setAge(event.target.value);
+};
+
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -98,34 +111,51 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Registrarte
+          Registrar Clase
         </Typography>
         <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="nombre"
+                autoComplete="ID"
+                name="ID"
                 required
-                type="text"
+                type="number"
                 variant="outlined"
-                onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
-                id="nombre"
-                label="Nombre"
+                id="ID"
+                label="ID de Clase"
                 autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                autoComplete="HoraIn"
+                name="HoraIn"
                 required
+                type="time"
+                variant="outlined"
+                onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
-                onChange = {e => actualiza(e, 'apellido')}
-                id="apellido"
-                label="Apellido"
-                name="apellido"
-                autoComplete="lname"
+                id="HoraIn"
+                label="Hora de Inicio"
+                defaultValue="07:30"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+            <TextField
+                autoComplete="HoraFin"
+                name="HoraFin"
+                required
+                type="time"
+                variant="outlined"
+                onChange = {e => actualiza(e, 'nombre')}
+                fullWidth
+                id="HoraFin"
+                label="Hora de Fin"
+                defaultValue="08:30"
+                autoFocus
               />
             </Grid>
             <Grid item xs={12}>
@@ -134,39 +164,23 @@ export default function SignUp() {
                 required
                 fullWidth
                 onChange = {e => actualiza(e, 'usuario')}
-                id="usuario"
-                label="Nombre de Usuario"
-                name="usuario"
-                autoComplete="usuario"
+                id="nomCurso"
+                label="Nombre del Curso"
+                name="nomCurso"
+                autoComplete="nomCurso"
               />
               </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                onChange = {e => actualiza(e, 'correo')}
-                id="correo"
-                type="email"
-                label="Correo"
-                name="correo"
-                autoComplete="correo"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="contraseña"
-                label="contraseña"
-                type="password"
-                helperText="Deben ser 8 caracteres"
-            inputProps= {{pattern: ".{8,}" }}
-                onChange = {e => actualiza(e, 'contraseña')}
-                id="contraseña"
-                autoComplete="current-contraseña"
-              />
+            <Grid  item xs={12}>
+            <InputLabel id="modalidad">Modalidad</InputLabel>
+        <Select
+          labelId="modalidad"
+          id="modalidad"
+          value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value={"Presencial"}>Presencial</MenuItem>
+          <MenuItem value={"Virtual"}>Virtual</MenuItem>
+        </Select>
             </Grid>
             
           </Grid>
@@ -177,15 +191,8 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Registrarte
+            Registrar
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link variant="body2" onClick = {() => {changeToSignIn()}}>
-                ¿Ya tienes una cuenta? Inicia sesión
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>

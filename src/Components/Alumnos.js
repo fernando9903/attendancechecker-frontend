@@ -12,6 +12,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import {createPOST} from './../API/createPOST';
 
@@ -24,7 +29,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your website
+        ITSON
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -69,6 +74,12 @@ export default function SignUp() {
     createPOST(usuario);
   }*/
 
+  const [cursos, setCurso] = React.useState('');
+
+const handleChange = (event) => {
+  setCurso(event.target.value);
+};
+
   var actualiza = (e, type) => {
 
     usuario[type] = e.target.value;
@@ -98,21 +109,21 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Registrarte
+          Registrar Alumnos
         </Typography>
         <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="nombre"
+                autoComplete="ID"
+                name="ID"
                 required
-                type="text"
+                type="number"
                 variant="outlined"
                 onChange = {e => actualiza(e, 'nombre')}
                 fullWidth
-                id="nombre"
-                label="Nombre"
+                id="ID"
+                label="ID Alumno"
                 autoFocus
               />
             </Grid>
@@ -122,10 +133,10 @@ export default function SignUp() {
                 required
                 fullWidth
                 onChange = {e => actualiza(e, 'apellido')}
-                id="apellido"
-                label="Apellido"
-                name="apellido"
-                autoComplete="lname"
+                id="nombres"
+                label="Nombre(s)"
+                name="nombres"
+                autoComplete="nombres"
               />
             </Grid>
             <Grid item xs={12}>
@@ -134,39 +145,23 @@ export default function SignUp() {
                 required
                 fullWidth
                 onChange = {e => actualiza(e, 'usuario')}
-                id="usuario"
-                label="Nombre de Usuario"
-                name="usuario"
-                autoComplete="usuario"
+                id="apellidos"
+                label="Apellido(s)"
+                name="apellidos"
+                autoComplete="apellidos"
               />
               </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                onChange = {e => actualiza(e, 'correo')}
-                id="correo"
-                type="email"
-                label="Correo"
-                name="correo"
-                autoComplete="correo"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="contraseña"
-                label="contraseña"
-                type="password"
-                helperText="Deben ser 8 caracteres"
-            inputProps= {{pattern: ".{8,}" }}
-                onChange = {e => actualiza(e, 'contraseña')}
-                id="contraseña"
-                autoComplete="current-contraseña"
-              />
+            <InputLabel id="Cursos">Curso</InputLabel>
+        <Select
+          labelId="cursos"
+          id="cursos"
+          value={cursos}
+          onChange={handleChange}
+        >
+          <MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>
+          <MenuItem value={"Ingles B-II"}>Ingles B-II</MenuItem>
+        </Select>
             </Grid>
             
           </Grid>
@@ -177,15 +172,8 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Registrarte
+            Registrar
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link variant="body2" onClick = {() => {changeToSignIn()}}>
-                ¿Ya tienes una cuenta? Inicia sesión
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>
