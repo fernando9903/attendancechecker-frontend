@@ -19,7 +19,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import React, { useState, useEffect } from "react";
-import createPOST from './../API/createPOST';
+import createPOST from './../API/createAlumn';
 
 import SignIn from './SignIn';
 
@@ -67,6 +67,9 @@ export default function SignUp() {
       last_name: "",
   }
 
+  const clases = fetch (`http://localhost:3000/clase/`)
+  .then(res => res.text()).then(pokemon => console.log(pokemon))
+
   const [state, setState] = useState({
     select: {
       
@@ -79,7 +82,7 @@ export default function SignUp() {
   const [json, setJson] = useState([]);
 
   useEffect(() => {
-    //var valor= createLogIn(state);
+    var valor= createPOST(state);
      
    
    }, [state]);
@@ -90,8 +93,8 @@ export default function SignUp() {
     setState({
       select: {
         id: e.target.id.value,
-      name: e.target.password.value,
-      last_name: e.target.email.value,
+      name: e.target.name.value,
+      last_name: e.target.last_name.value,
       }
 
 
@@ -140,7 +143,7 @@ const handleChanges = (event) => {
         <Typography component="h1" variant="h5">
           Registrar Alumnos
         </Typography>
-        <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
+        <form className={classes.form} Validate onSubmit = {e => handleChange(e)}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -149,7 +152,7 @@ const handleChanges = (event) => {
                 id="id"
                 required
                 type="number"
-                variant="outlined"
+                variant="outlined"helperText="No introducir id existente"
                 onChange = {e => actualiza(e, 'id')}
                 fullWidth
                 onInput = {(e) =>{
@@ -179,16 +182,17 @@ const handleChanges = (event) => {
               <TextField
                 variant="outlined"
                 required
-                fullWidthonInput= { (e) => {
-                  e.target.value = e.target.value.slice(0,40 )
-                }}
+                fullWidth
                 onChange = {e => actualiza(e, 'last_name')}
                 id="last_name"
-                label="Apellisdo(s)"
-                name="apellidos"
+                label="Apellido(s)"
+                onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,40)
+                }}
+                name="nombres"
                 autoComplete="apellidos"
               />
-              </Grid>
+            </Grid>
            {/* <Grid item xs={12}>
             <InputLabel id="Cursos">Curso</InputLabel>
         <Select
