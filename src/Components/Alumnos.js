@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,6 +18,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+import React, { useState, useEffect } from "react";
 import createPOST from './../API/createPOST';
 
 import SignIn from './SignIn';
@@ -61,12 +62,40 @@ export default function SignUp() {
   const classes = useStyles();
 
   var usuario = {
-    apellido: '',
-    contraseña: '',
-    correo: '',
-    id: 0,
-    nombre: '',
-    usuario: ''
+    id: "",
+      name: "",
+      last_name: "",
+  }
+
+  const [state, setState] = useState({
+    select: {
+      
+      id: "",
+      name: "",
+      last_name: "",
+    }
+  });
+
+  const [json, setJson] = useState([]);
+
+  useEffect(() => {
+    //var valor= createLogIn(state);
+     
+   
+   }, [state]);
+  
+
+   const handleChange = e => {
+    e.preventDefault();
+    setState({
+      select: {
+        id: e.target.id.value,
+      name: e.target.password.value,
+      last_name: e.target.email.value,
+      }
+
+
+    });
   }
 
   /*var callPOST = (event) => {
@@ -76,7 +105,7 @@ export default function SignUp() {
 
   const [cursos, setCurso] = React.useState('');
 
-const handleChange = (event) => {
+const handleChanges = (event) => {
   setCurso(event.target.value);
 };
 
@@ -113,28 +142,35 @@ const handleChange = (event) => {
         </Typography>
         <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="ID"
-                name="ID"
+                name="id"
+                id="id"
                 required
                 type="number"
                 variant="outlined"
-                onChange = {e => actualiza(e, 'nombre')}
+                onChange = {e => actualiza(e, 'id')}
                 fullWidth
+                onInput = {(e) =>{
+                  e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,6)
+              }}
                 id="ID"
                 label="ID Alumno"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                onChange = {e => actualiza(e, 'apellido')}
-                id="nombres"
+                onChange = {e => actualiza(e, 'name')}
+                id="name"
                 label="Nombre(s)"
+                onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,40)
+                }}
                 name="nombres"
                 autoComplete="nombres"
               />
@@ -143,15 +179,17 @@ const handleChange = (event) => {
               <TextField
                 variant="outlined"
                 required
-                fullWidth
-                onChange = {e => actualiza(e, 'usuario')}
-                id="apellidos"
-                label="Apellido(s)"
+                fullWidthonInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,40 )
+                }}
+                onChange = {e => actualiza(e, 'last_name')}
+                id="last_name"
+                label="Apellisdo(s)"
                 name="apellidos"
                 autoComplete="apellidos"
               />
               </Grid>
-            <Grid item xs={12}>
+           {/* <Grid item xs={12}>
             <InputLabel id="Cursos">Curso</InputLabel>
         <Select
           labelId="cursos"
@@ -162,7 +200,7 @@ const handleChange = (event) => {
           <MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>
           <MenuItem value={"Ingles B-II"}>Ingles B-II</MenuItem>
         </Select>
-            </Grid>
+            </Grid>*/}
             
           </Grid>
           <Button

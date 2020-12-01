@@ -144,7 +144,9 @@ export default function SignUp() {
                 onChange = {e => actualiza(e, 'name')}
                 fullWidth
                 id="name"
-                label="Nombre"
+                label="Nombre"onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,40 )
+                }}
                 autoFocus
               />
             </Grid>
@@ -156,7 +158,9 @@ export default function SignUp() {
                 onChange = {e => actualiza(e, 'last_name')}
                 id="last_name"
                 label="Apellido"
-                name="last_name"
+                name="last_name"onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,40 )
+                }}
                 autoComplete="lname"
               />
             </Grid>
@@ -168,7 +172,9 @@ export default function SignUp() {
                 fullWidth
                 onChange = {e => actualiza(e, 'email')}
                 id="email"
-                type="email"
+                type="email"onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,30 )
+                }}
                 label="Correo"
                 name="correo"
                 autoComplete="correo"
@@ -183,7 +189,10 @@ export default function SignUp() {
                 label="contraseña"
                 type="password"
                 helperText="Deben ser 8 caracteres"
-            inputProps= {{pattern: ".{8,}" }}
+                onInput= { (e) => {
+                  e.target.value = e.target.value.slice(0,20)
+                }}
+              inputProps= {{pattern: ".{8,}" }}
                 onChange = {e => actualiza(e, 'password')}
                 id="password"
                 autoComplete="current-contraseña"

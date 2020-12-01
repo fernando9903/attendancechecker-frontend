@@ -117,7 +117,9 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="email"onInput= { (e) => {
+              e.target.value = e.target.value.slice(0,30 )
+            }}
             type="email"
             label="Correo o nombre de usuario"
             name="email"
