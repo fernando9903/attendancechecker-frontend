@@ -18,7 +18,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import {createPOST} from './../API/createPOST';
+import createPOST from './../API/createPOST';
 
 import SignIn from './SignIn';
 

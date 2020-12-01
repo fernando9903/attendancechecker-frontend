@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import {createPOST} from './../API/createPOST';
+import createPOST from './../API/createPOST';
 
 import SignIn from './SignIn';
 
@@ -99,7 +99,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Registrarte
+          Registrartessss
         </Typography>
         <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
           <Grid container spacing={2}>

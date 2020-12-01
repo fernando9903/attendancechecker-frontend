@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,8 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import React, { useState, useEffect } from "react";
 
-import {createPOST} from './../API/createPOST';
+import createPOST from './../API/createPOST';
 
 import SignIn from './SignIn';
 
@@ -62,6 +63,39 @@ export default function SignUp() {
     password: '',
   }
 
+  const [state, setState] = useState({
+    select: {
+      name: '',
+      last_name: '',
+      email: '',
+      password: '',
+    }
+  });
+
+  const [json, setJson] = useState([]);
+
+  useEffect(() => {
+    var valor= createPOST(state);
+     
+   
+   }, [state]);
+  
+
+   const handleChange = e => {
+    e.preventDefault();
+    setState({
+      select: {
+        name: e.target.name.value,
+        last_name: e.target.last_name.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+      }
+
+
+    });
+  }
+
+
   /*var callPOST = (event) => {
     console.log(JSON.stringify(usuario));
     createPOST(usuario);
@@ -71,7 +105,7 @@ export default function SignUp() {
 
     usuario[type] = e.target.value;
 
-    console.log(JSON.stringify(usuario));
+    console.log(JSON.stringify(state));
     if(type == 'registrar')
     {
       createPOST(usuario);
@@ -98,7 +132,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Registrarte
         </Typography>
-        <form className={classes.form} Validate onSubmit = {e => actualiza(e, 'registrar')}>
+        <form className={classes.form} Validate onSubmit = {e => handleChange(e)}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -122,7 +156,7 @@ export default function SignUp() {
                 onChange = {e => actualiza(e, 'last_name')}
                 id="last_name"
                 label="Apellido"
-                name="apellido"
+                name="last_name"
                 autoComplete="lname"
               />
             </Grid>

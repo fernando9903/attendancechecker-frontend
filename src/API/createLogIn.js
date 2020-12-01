@@ -10,7 +10,7 @@ import Home from './../Components/Home'
 
 
 export default function createLogIn(props)  {
- 
+  
     try {
        fetch (`http://localhost:3000/profesor/${(props.select.correo)}/${(props.select.contraseña)}`)
                   .then(res=> res.text()).then(pokemon => {

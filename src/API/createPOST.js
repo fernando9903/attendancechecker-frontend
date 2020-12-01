@@ -3,42 +3,34 @@
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignIn from './../Components/Home';
+import SignIn from './../Components/SignIn';
 import SignUp from './../Components/SignUpExistente';
 //import unfetch from 'unfetch';
 
 // * snip *
-export function createPOST(data) {
+export default function createPOST(data) {
     //const f= unfetch.bind()
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-
-    headers.append('Access-Control-Allow-Origin', "*");
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Credentials', 'true');
-    headers.append('GET', 'POST', 'OPTIONS');
-
-     fetch('http://localhost:3000/profesor/', {
-        mode: "cors",
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: headers
-    }).then(res =>{
-        console.log("Este es el resss");
-        console.log(res.status)
-        //res.text()
-        if(res.status == "201") {
-            ReactDOM.render(
-                
-                    <SignIn/>,
-                  document.getElementById('root'));
-        }
-
-        
-    }).catch(err =>
-    {
-        console.log("ESTA ENTRANDO AL CATCH DEL CREAR")
-        console.log(err);
-    });
+    try {
+        fetch (`http://localhost:3000/profesor/`, {headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },method: "post", body: JSON.stringify(data).slice(10, -1)})
+                   .then(res=> {
+                        console.log("entro post");
+                        console.log(JSON.stringify(data).slice(10, -1))
+                        if(res.status=="201")
+                        {
+                            ReactDOM.render(
+                                <React.StrictMode>
+                                    <SignIn/>
+                                  </React.StrictMode>,
+                                  document.getElementById('root'));
+                        }
+                   }
+ 
+                   ); 
+                }catch (error) {
+          console.log(error);
+       }
+       return "hola"
 }
