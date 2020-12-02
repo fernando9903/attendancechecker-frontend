@@ -67,8 +67,20 @@ export default function SignUp() {
       last_name: "",
   }
 
+  var menuItems =  []
+
   const clases = fetch (`http://localhost:3000/clase/`)
-  .then(res => res.text()).then(pokemon => console.log(pokemon))
+  .then(res => res.text()).then(pokemon => {
+    console.log("Estas son las clases")
+    console.log(cursos)
+    console.log(JSON.parse(pokemon).clases[0]._id)
+
+    for (const property in JSON.parse(pokemon).clases) {
+      console.log(JSON.parse(pokemon).clases[property].name)
+      menuItems.push(<MenuItem value={JSON.parse(pokemon).clases[property]._id}>
+        {JSON.parse(pokemon).clases[property].name}</MenuItem>)
+    }
+  } )
 
   const [state, setState] = useState({
     select: {
@@ -78,6 +90,8 @@ export default function SignUp() {
       last_name: "",
     }
   });
+
+  
 
   const [json, setJson] = useState([]);
 
@@ -93,8 +107,8 @@ export default function SignUp() {
     setState({
       select: {
         id: e.target.id.value,
-      name: e.target.name.value,
-      last_name: e.target.last_name.value,
+        name: e.target.name.value,
+        last_name: e.target.last_name.value,
       }
 
 
@@ -109,7 +123,9 @@ export default function SignUp() {
   const [cursos, setCurso] = React.useState('');
 
 const handleChanges = (event) => {
+  console.log("Estos son los handleschanges")
   setCurso(event.target.value);
+  console.log(cursos)
 };
 
   var actualiza = (e, type) => {
@@ -193,18 +209,25 @@ const handleChanges = (event) => {
                 autoComplete="apellidos"
               />
             </Grid>
-           {/* <Grid item xs={12}>
+            <Grid item xs={12}>
             <InputLabel id="Cursos">Curso</InputLabel>
         <Select
           labelId="cursos"
           id="cursos"
           value={cursos}
-          onChange={handleChange}
+          onChange={handleChanges}
         >
-          <MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>
-          <MenuItem value={"Ingles B-II"}>Ingles B-II</MenuItem>
+          {
+            //Select.push(<MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>)
+            //MenuItem.push(<MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>)
+          
+            menuItems
+            /*<MenuItem value={"Metodos Agiles"}>Metodos Agiles</MenuItem>
+          <MenuItem value={"Ingles B-II"}>Ingles B-II</MenuItem>*/
+          }
+          
         </Select>
-            </Grid>*/}
+            </Grid>
             
           </Grid>
           <Button

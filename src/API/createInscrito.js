@@ -7,13 +7,11 @@ import SignIn from './../Components/SignIn';
 import SignUp from './../Components/SignUpExistente';
 //import unfetch from 'unfetch';
 
-import createInscrito from './createInscrito';
-
 // * snip *
 export default function createPOST(data) {
     //const f= unfetch.bind()
     try {
-        fetch (`http://localhost:3000/alumno/`, {headers: {
+        fetch (`http://localhost:3000/claseinscrito/`, {headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },method: "post", body: JSON.stringify(data).slice(10, -1)})
@@ -22,7 +20,6 @@ export default function createPOST(data) {
                         console.log(JSON.stringify(data).slice(10, -1))
                         if(res.status=="201")
                         {
-
                             ReactDOM.render(
                                 <React.StrictMode>
                                     <SignIn/>
