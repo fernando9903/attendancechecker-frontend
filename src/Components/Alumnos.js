@@ -123,7 +123,7 @@ export default function SignUp() {
   const [cursos, setCurso] = React.useState('');
 
 const handleChanges = (event) => {
-  console.log("Estos son los handleschanges")
+  console.log("Estos son los handleschangess")
   setCurso(event.target.value);
   console.log(cursos)
 };
