@@ -16,13 +16,18 @@ export default function createPOST(data) {
         fetch (`http://localhost:3000/alumno/`, {headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          },method: "post", body: JSON.stringify(data).slice(10, -1)})
+          },method: "post", body: JSON.stringify(data).slice(10, -35)+'}'})
                    .then(res=> {
                         console.log("entro post");
-                        console.log(JSON.stringify(data).slice(10, -1))
+                        console.log(data.select.id)
+                        console.log(JSON.stringify(data).slice(10, -35)+'}')
                         if(res.status=="201")
                         {
-
+                            var usuario = {
+                                id_alumno: data.select.id,
+                                  id_clase: data.select._id,
+                              }
+                            createInscrito(usuario)
                             ReactDOM.render(
                                 <React.StrictMode>
                                     <SignIn/>

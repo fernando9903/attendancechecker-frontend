@@ -88,6 +88,7 @@ export default function SignUp() {
       id: "",
       name: "",
       last_name: "",
+      _id: "",
     }
   });
 
@@ -109,6 +110,7 @@ export default function SignUp() {
         id: e.target.id.value,
         name: e.target.name.value,
         last_name: e.target.last_name.value,
+        _id: cursos,
       }
 
 
@@ -215,6 +217,7 @@ const handleChanges = (event) => {
           labelId="cursos"
           id="cursos"
           value={cursos}
+          required
           onChange={handleChanges}
         >
           {

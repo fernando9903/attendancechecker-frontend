@@ -307,7 +307,7 @@ const handleChangePeriodo = (e) => {
           labelId="periodo"
           id="periodo"
           value={periodo}
-          onChange={e => actualiza(e, 'periodo')}
+          onChange={e => actualiza(e, 'periodo')} required='true'
         >
           <MenuItem  value={"Enero-Mayo"} >Enero-Mayo</MenuItem>
           <MenuItem value={"Agosto-Diciembre"}>Agosto-Diciembre</MenuItem>

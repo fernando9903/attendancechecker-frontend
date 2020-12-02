@@ -14,10 +14,11 @@ export default function createPOST(data) {
         fetch (`http://localhost:3000/claseinscrito/`, {headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          },method: "post", body: JSON.stringify(data).slice(10, -1)})
+          },method: "post", body: JSON.stringify(data)})
                    .then(res=> {
-                        console.log("entro post");
-                        console.log(JSON.stringify(data).slice(10, -1))
+                        console.log("entro post2");
+                        console.log(JSON.stringify(data))
+                        console.log(res)
                         if(res.status=="201")
                         {
                             ReactDOM.render(
