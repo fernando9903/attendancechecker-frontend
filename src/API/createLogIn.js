@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SignInError from './../Components/SignInError'
 
-import Home from './../Components/Home'
+import Home from './../Components/Home2'
 //import unfetch from 'unfetch';
 
 

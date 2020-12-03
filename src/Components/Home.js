@@ -9,18 +9,16 @@ import ProductValues from './../modules/ProductValues';
 import ProductHowItWorks from './../modules/ProductHowItWorks';
 import ProductCTA from './../modules/ProductCTA';
 import AppAppBar from './../modules/AppAppBar';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
 
 function Index() {
+  
+  
   return (
     <React.Fragment>
       <AppAppBar />
-      <ProductHero />
-      <ProductValues />
-      <ProductCategories />
-      <ProductHowItWorks />
-      <ProductCTA />
-      <ProductSmokingHero />
-      <AppFooter />
+      <img style={{ display: 'none' }} src={"./../IAsistel-Web-r.jpg"} alt="increase priority" />
     </React.Fragment>
   );
 }

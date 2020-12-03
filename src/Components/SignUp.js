@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import React, { useState, useEffect } from "react";
+import AppAppBar from './../modules/AppAppBar';
 
 import createPOST from './../API/createPOST';
 
@@ -124,6 +125,7 @@ export default function SignUp() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <React.Fragment><AppAppBar/></React.Fragment>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -173,7 +175,7 @@ export default function SignUp() {
                 onChange = {e => actualiza(e, 'email')}
                 id="email"
                 type="email"onInput= { (e) => {
-                  e.target.value = e.target.value.slice(0,30 )
+                  e.target.value = e.target.value.slice(0,40)
                 }}
                 label="Correo"
                 name="correo"
@@ -190,7 +192,7 @@ export default function SignUp() {
                 type="password"
                 helperText="Deben ser 8 caracteres"
                 onInput= { (e) => {
-                  e.target.value = e.target.value.slice(0,20)
+                  e.target.value = e.target.value.slice(0,25)
                 }}
               inputProps= {{pattern: ".{8,}" }}
                 onChange = {e => actualiza(e, 'password')}

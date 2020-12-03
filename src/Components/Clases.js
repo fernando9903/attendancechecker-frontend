@@ -21,7 +21,7 @@ import createPOST from './../API/createClase';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import React, { useState, useEffect } from "react";
-
+import AppAppBar from './../modules/AppAppBar2';
 import SignIn from './SignIn';
 
 import ReactDOM from 'react-dom';
@@ -210,6 +210,8 @@ const handleChangePeriodo = (e) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      
+      <React.Fragment><AppAppBar/></React.Fragment>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

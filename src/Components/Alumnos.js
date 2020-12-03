@@ -18,6 +18,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+import AppAppBar from './../modules/AppAppBar2';
 import React, { useState, useEffect } from "react";
 import createPOST from './../API/createAlumn';
 
@@ -152,7 +153,10 @@ const handleChanges = (event) => {
   }
 
   return (
+    
+    
     <Container component="main" maxWidth="xs">
+      <React.Fragment><AppAppBar/></React.Fragment>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

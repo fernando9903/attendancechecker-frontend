@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import createLogIn from './../API/createLogIn';
 import React, { useState, useEffect } from "react";
+import AppAppBar from './../modules/AppAppBar2';
 import SignUp from './SignUp';
 
 import ReactDOM from 'react-dom';
@@ -105,6 +106,7 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <React.Fragment><AppAppBar/></React.Fragment>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

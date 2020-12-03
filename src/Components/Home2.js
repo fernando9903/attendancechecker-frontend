@@ -8,7 +8,6 @@ import ProductHero from './../modules/ProductHero';
 import ProductValues from './../modules/ProductValues';
 import ProductHowItWorks from './../modules/ProductHowItWorks';
 import ProductCTA from './../modules/ProductCTA';
-import AppAppBar from './../modules/AppAppBar';
 
 
 const  state = { 
@@ -67,7 +66,7 @@ export default withRoot(Index);
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import DataTable from 'react-data-table-component';
-import AppAppBar from './../modules/AppAppBar';
+import AppAppBar from './../modules/AppAppBar2';
 import AppFooter from './../modules/AppFooter';
 
 function Home2() {

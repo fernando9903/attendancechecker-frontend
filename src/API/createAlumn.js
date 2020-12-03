@@ -3,8 +3,11 @@
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignIn from './../Components/SignIn';
+import SignIn from './../Components/Home2';
 import SignUp from './../Components/SignUpExistente';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+
 //import unfetch from 'unfetch';
 
 import createInscrito from './createInscrito';
@@ -28,6 +31,7 @@ export default function createPOST(data) {
                                   id_clase: data.select._id,
                               }
                             createInscrito(usuario)
+                            
                             ReactDOM.render(
                                 <React.StrictMode>
                                     <SignIn/>

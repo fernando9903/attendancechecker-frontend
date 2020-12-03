@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import createLogIn from './../API/createLogIn';
 import React, { useState, useEffect } from "react";
+import AppAppBar from './../modules/AppAppBar';
 import SignUp from './SignUp';
 
 import ReactDOM from 'react-dom';
@@ -103,6 +104,7 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <React.Fragment><AppAppBar/></React.Fragment>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -119,8 +121,11 @@ export default function SignIn() {
             fullWidth
             id="email"
             type="email"
-            label="Correo o nombre de usuario"
+            label="Correo Electrónico"
             name="email"
+            onInput= { (e) => {
+              e.target.value = e.target.value.slice(0,40)
+            }}
             autoComplete="email"
             autoFocus
           />
@@ -131,6 +136,9 @@ export default function SignIn() {
             fullWidth
             name="password"
             label="Contraseña"
+            onInput= { (e) => {
+              e.target.value = e.target.value.slice(0,25)
+            }}
             id="password"
             type="password"
             autoComplete="current-password"

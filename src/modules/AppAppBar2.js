@@ -5,9 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../Components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../Components/Toolbar';
-import SignIn from './../Components/SignIn';
-import SignUp from './../Components/SignUp';
+import Alumnos from './../Components/Alumnos';
+import Clases from './../Components/Clases';
 import Home from './../Components/Home';
+
+import Home2 from './../Components/Home2';
 import ReactDOM from 'react-dom';
 
 const styles = (theme) => ({
@@ -32,7 +34,8 @@ const styles = (theme) => ({
   rightLink: {
     fontSize: 16,
     color: theme.palette.common.white,
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(10),
+    justifyContent: 'space-between',
   },
   linkSecondary: {
     color: theme.palette.secondary.main,
@@ -56,12 +59,12 @@ function AppAppBar(props) {
               console.log("hola")
               ReactDOM.render(
                 <React.StrictMode>
-                    <Home/>
+                    <Home2/>
                   </React.StrictMode>,
               document.getElementById('root'))}
             }
           >
-            {'mr Asistencias'}
+            {'MR ASISTENCIAS'}
           </Link>
           <div className={classes.right}>
             <Link
@@ -73,12 +76,12 @@ function AppAppBar(props) {
                 console.log("hola")
                 ReactDOM.render(
                   <React.StrictMode>
-                      <SignIn/>
+                      <Alumnos/>
                     </React.StrictMode>,
                 document.getElementById('root'))}
               }
             >
-              {'Iniciar Sesión'}
+              {'Agregar Alumno'}
             </Link>
             <Link
               variant="h6"
@@ -88,12 +91,28 @@ function AppAppBar(props) {
                 console.log("hola")
                 ReactDOM.render(
                   <React.StrictMode>
-                      <SignUp/>
+                      <Clases/>
                     </React.StrictMode>,
                 document.getElementById('root'))}
               }
             >
-              {'Crear Cuenta'}
+              {'Agregar Clase'}
+            </Link>
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              className={classes.rightLink}
+              onClick= {e=> { 
+                console.log("hola")
+                ReactDOM.render(
+                  <React.StrictMode>
+                      <Home/>
+                    </React.StrictMode>,
+                document.getElementById('root'))}
+              }
+            >
+              {'Cerrar Sesión'}
             </Link>
           </div>
         </Toolbar>

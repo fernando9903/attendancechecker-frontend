@@ -11,7 +11,7 @@ import SignUp from './../Components/SignUpExistente';
 export default function createPOST(data) {
     //const f= unfetch.bind()
     try {
-        fetch (`http://localhost:3000/claseinscrito/`, {headers: {
+        fetch (`http://localhost:3000/alumnoinscrito/`, {headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },method: "post", body: JSON.stringify(data)})
